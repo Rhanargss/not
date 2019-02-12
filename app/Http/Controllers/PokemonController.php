@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\Teste;
 use Illuminate\Http\Request;
 
 use App\Pokemon;
 use App\User;
+
 
 class PokemonController extends Controller
 {
@@ -27,13 +29,18 @@ class PokemonController extends Controller
 		$user->save();
 
 
-		/*Caso a qtdPokedex seja maior/igual a 70 e menor que 100...
+
+
+		//Caso a qtdPokedex seja maior/igual a 70 e menor que 100...
+
 		if($user->qtdPokedex >= 70 && $user->qtdPokedex <100){
+
 			//usuário deve ser notificado por e-mail que a pokedex ficará cheia em breve
 			//O email deve mostrar a quantidade de pokemon que estão na pokedex
-			//     [ NECESSARIO COMPLETAR ]
-		}*/
+		$user->notify(new Teste($user));
 
+
+		}
 
 		//Caso a qtdPokedex seja igual a 100...
 		if($user->qtdPokedex == 100){
@@ -45,11 +52,10 @@ class PokemonController extends Controller
 		//Será necessário notificar o usuário por e-mail sobre seu novo Pokemon
 		//No email devem estar os dados da nova instancia do pokemon
 		//O nome do App deve estar em cor branca
-		//O email deve ter a cor vermelha na barra de cima 
+		//O email deve ter a cor vermelha na barra de cima
 		//e a cor branca na barra de baixo
 		//Editem o corpo do email e substituam o "Regards" padrão por outras palavras, como "Att", "Abraços", etc.
 		//		   [ NECESSARIO COMPLETAR ]
-
 
 
 		//mensagem de sucesso é retornada ao usuario
